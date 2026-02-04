@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Send, Bot, Sparkles, User, Loader2, X, Image as ImageIcon, Paperclip, ShoppingCart, Plus } from 'lucide-react';
+import { Send, Bot, Sparkles, Loader2, X, Image as ImageIcon, Paperclip, Plus } from 'lucide-react';
 import { sendMessageToGemini } from '../services/geminiService';
 import { ChatMessage, Product } from '../types';
 import { PRODUCTS } from '../constants';

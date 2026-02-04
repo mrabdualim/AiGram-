@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingCart, Search, Zap, User, Sun, Moon, Globe } from 'lucide-react';
+import { ShoppingCart, Search, Zap, User, Sun, Moon } from 'lucide-react';
 import { APP_NAME, TRANSLATIONS } from '../constants';
 import { Language } from '../types';
 

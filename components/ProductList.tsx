@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Product, Language } from '../types';
 import { PRODUCTS, TRANSLATIONS } from '../constants';
 import ProductCard from './ProductCard';
-import { Moon, Flame, Zap } from 'lucide-react';
+import { Moon } from 'lucide-react';
 
 interface ProductListProps {
   onAddToCart: (product: Product) => void;

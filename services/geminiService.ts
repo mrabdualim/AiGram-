@@ -1,8 +1,9 @@
-import { GoogleGenAI, Chat } from "@google/genai";
+import { GoogleGenerativeAI, ChatSession } from "@google/generative-ai";
 import { PRODUCTS } from '../constants';
 import { Product } from '../types';
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || 'demo-key' });
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY || 'demo-key';
+const ai = new GoogleGenerativeAI(apiKey);
 
 // Construct a system instruction that includes the product catalog
 const systemInstruction = `
@@ -39,14 +40,17 @@ ${JSON.stringify(PRODUCTS.map(p => ({
 4. Цены пиши в рублях (₽).
 `;
 
-let chatSession: Chat | null = null;
+let chatSession: ChatSession | null = null;
 
 export const getChatSession = () => {
   if (!chatSession) {
-    chatSession = ai.chats.create({
-      model: 'gemini-3-flash-preview', 
-      config: {
-        systemInstruction,
+    const model = ai.getGenerativeModel({ 
+      model: 'gemini-pro',
+    });
+    chatSession = model.startChat({
+      history: [],
+      generationConfig: {
+        maxOutputTokens: 1000,
       },
     });
   }
@@ -57,7 +61,7 @@ export const sendMessageToGemini = async (message: string, imageBase64?: string)
   try {
     const session = getChatSession();
     
-    let msgContent: any = message;
+    let msgContent: string | any[] = message;
 
     if (imageBase64) {
       // Clean base64 string if needed (remove data:image/...;base64, prefix)
@@ -74,8 +78,9 @@ export const sendMessageToGemini = async (message: string, imageBase64?: string)
       ];
     }
 
-    const result = await session.sendMessage({ message: msgContent });
-    const rawText = result.text || "";
+    const result = await session.sendMessage(msgContent);
+    const response = await result.response;
+    const rawText = response.text();
 
     // Attempt to parse JSON response
     try {
@@ -166,12 +171,13 @@ export const getPersonalizedRecommendations = (
  */
 export const generateProductDescription = async (productName: string, features: string[]): Promise<string> => {
   try {
-    const prompt = `Generate a compelling product description for ${productName} with these features: ${features.join(', ')}. Keep it under 100 words and make it engaging.`;
+    const prompt = `${systemInstruction}\n\nGenerate a compelling product description for ${productName} with these features: ${features.join(', ')}. Keep it under 100 words and make it engaging.`;
     
     const session = getChatSession();
-    const result = await session.sendMessage({ message: prompt });
+    const result = await session.sendMessage(prompt);
+    const response = await result.response;
     
-    return result.text || "A great product for your needs!";
+    return response.text() || "A great product for your needs!";
   } catch (error) {
     console.error("Description generation error:", error);
     return "An amazing product that will enhance your lifestyle.";

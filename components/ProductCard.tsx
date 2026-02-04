@@ -170,7 +170,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, isInCar
           </div>
 
           <button 
-            onClick={() => onAddToCart({ ...product, selectedColor })}
+            onClick={() => {
+              const productWithColor = { ...product } as any;
+              if (selectedColor) productWithColor.selectedColor = selectedColor;
+              onAddToCart(productWithColor);
+            }}
             disabled={isInCart}
             className={`
               h-12 w-12 rounded-[1.2rem] flex items-center justify-center transition-all duration-300 shadow-lg transform active:scale-95

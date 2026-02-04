@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, ArrowRight, PlayCircle, Check } from 'lucide-react';
+import { Sparkles, ArrowRight, Check } from 'lucide-react';
 import { TRANSLATIONS } from '../constants';
 import { Language } from '../types';
 
