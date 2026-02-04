@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Star, Plus, Check, Heart, Flame, Clock, AlertTriangle, Moon, Info } from 'lucide-react';
 import { Product, ProductColor, Language } from '../types';
 import { TRANSLATIONS } from '../constants';
+import SocialActions from './SocialActions';
 
 interface ProductCardProps {
   product: Product;
@@ -99,6 +100,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, isInCar
             ))}
           </div>
         )}
+
+        {/* Social Actions */}
+        <SocialActions
+          productId={product.id}
+          initialLikes={product.likes || Math.floor(Math.random() * 500) + 50}
+          initialComments={product.comments || Math.floor(Math.random() * 50)}
+          initialShares={product.shares || Math.floor(Math.random() * 20)}
+        />
 
         {/* Damage Reason */}
         {product.isDamaged && product.damageReason && (

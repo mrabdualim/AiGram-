@@ -5,14 +5,17 @@ import ProductList from './components/ProductList';
 import AIChat from './components/AIChat';
 import Cart from './components/Cart';
 import BottomNav from './components/BottomNav';
-import { Product, CartItem, Language } from './types';
+import Stories from './components/Stories';
+import { Product, CartItem, Language, Story } from './types';
 import { Bot } from 'lucide-react';
+import { STORIES } from './constants';
 
 const App: React.FC = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [activeTab, setActiveTab] = useState('home');
+  const [stories, setStories] = useState<Story[]>(STORIES);
   
   // State for Language and Theme
   const [language, setLanguage] = useState<Language>('tj');
@@ -57,6 +60,15 @@ const App: React.FC = () => {
     setCartItems([]);
   };
 
+  const handleStoryClick = (story: Story) => {
+    // Mark story as viewed
+    setStories(prev => prev.map(s => 
+      s.id === story.id ? { ...s, viewed: true } : s
+    ));
+    // You could open a modal or navigate to story view here
+    console.log('Story clicked:', story);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-slate-50/50 dark:bg-slate-900 transition-colors duration-300 pb-20 md:pb-0">
       <Header 
@@ -74,6 +86,11 @@ const App: React.FC = () => {
             onOpenAi={() => setIsChatOpen(true)} 
             language={language}
           />
+        </div>
+        
+        {/* Stories Section */}
+        <div className="container mx-auto px-4 mt-6">
+          <Stories stories={stories} onStoryClick={handleStoryClick} />
         </div>
         
         <div id="catalog">

@@ -229,3 +229,43 @@ export const PRODUCTS: Product[] = [
     ]
   }
 ];
+
+// Stories data (Instagram/TikTok style)
+export const STORIES = [
+  {
+    id: 's1',
+    title: '🔥 Hot Deals',
+    image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=200&q=80',
+    productIds: ['1', '3', '5'],
+    viewed: false
+  },
+  {
+    id: 's2',
+    title: '⚡ Flash Sale',
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=200&q=80',
+    videoUrl: 'https://example.com/flash-sale.mp4',
+    productIds: ['2', '4'],
+    viewed: false
+  },
+  {
+    id: 's3',
+    title: '🎁 New Arrivals',
+    image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=200&q=80',
+    productIds: ['6', '8'],
+    viewed: true
+  },
+  {
+    id: 's4',
+    title: '🏠 Smart Home',
+    image: 'https://images.unsplash.com/photo-1558089687-d5d12a41cdee?auto=format&fit=crop&w=200&q=80',
+    productIds: ['1'],
+    viewed: false
+  },
+  {
+    id: 's5',
+    title: '🎮 Gaming',
+    image: 'https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=200&q=80',
+    productIds: ['7'],
+    viewed: false
+  }
+];
