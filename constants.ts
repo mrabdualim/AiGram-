@@ -1,6 +1,6 @@
 import { Product } from './types';
 
-export const APP_NAME = "Мир Техники";
+export const APP_NAME = "AiGram";
 
 export const TRANSLATIONS = {
   ru: {
@@ -26,9 +26,9 @@ export const TRANSLATIONS = {
     discount: "Скидка",
     eveningSaleTitle: "Ночная распродажа",
     eveningSaleDesc: "Скидка -10% на весь ассортимент.",
-    heroTitle1: "Техника, которая",
-    heroTitle2: "понимает вас",
-    heroDesc: "Умный дом начинается с умного выбора. Доверьте подбор техники нашему искусственному интеллекту Zud AI.",
+    heroTitle1: "Маркетплейс нового",
+    heroTitle2: "поколения с AI",
+    heroDesc: "AiGram - социальный маркетплейс в стиле Instagram и TikTok с умным AI-помощником Zud AI для идеального выбора.",
     askAi: "Спросить Zud AI",
     happyClients: "довольных клиентов",
     optimalChoice: "Оптимальный выбор",
@@ -75,9 +75,9 @@ export const TRANSLATIONS = {
     discount: "Тахфиф",
     eveningSaleTitle: "Фурӯши шабона",
     eveningSaleDesc: "Тахфифи -10% барои ҳамаи молҳо.",
-    heroTitle1: "Техникае, ки",
-    heroTitle2: "шуморо мефаҳмад",
-    heroDesc: "Хонаи ҳушманд аз интихоби ҳушманд оғоз меёбад. Интихоби техникаро ба зеҳни сунъии Zud AI бовар кунед.",
+    heroTitle1: "Бозори наслӣ нав",
+    heroTitle2: "бо зеҳни сунъӣ",
+    heroDesc: "AiGram - бозори иҷтимоӣ дар услуби Instagram ва TikTok бо ёрдамгори ҳушманди AI барои интихоби беҳтарин.",
     askAi: "Пурсидан аз Zud AI",
     happyClients: "мизоҷони розӣ",
     optimalChoice: "Интихоби беҳтарин",

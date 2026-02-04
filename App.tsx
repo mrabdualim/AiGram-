@@ -105,14 +105,25 @@ const App: React.FC = () => {
       {/* Footer */}
       <footer className="bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800 py-12 mb-16 md:mb-0 transition-colors duration-300">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-900 dark:text-white font-bold text-xl mb-4">Мир Техники</p>
-          <div className="flex justify-center gap-6 mb-8 text-gray-500 dark:text-gray-400 flex-wrap">
-            <a href="#" className="hover:text-brand-600 dark:hover:text-brand-400">О нас</a>
-            <a href="#" className="hover:text-brand-600 dark:hover:text-brand-400">Доставка</a>
-            <a href="#" className="hover:text-brand-600 dark:hover:text-brand-400">Гарантия</a>
-            <a href="#" className="hover:text-brand-600 dark:hover:text-brand-400">Контакты</a>
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="bg-gradient-to-tr from-primary-600 to-primary-400 p-2 rounded-xl text-white shadow-lg">
+              <Bot size={24} />
+            </div>
+            <p className="text-gray-900 dark:text-white font-bold text-2xl">AiGram</p>
           </div>
-          <p className="text-gray-400 dark:text-gray-600 text-sm">© 2024 Мир Техники.<br/>Powered by Zud AI.</p>
+          <p className="text-gray-500 dark:text-gray-400 mb-6 max-w-md mx-auto">
+            AI-powered social marketplace combining Instagram, TikTok, and smart shopping
+          </p>
+          <div className="flex justify-center gap-6 mb-8 text-gray-500 dark:text-gray-400 flex-wrap">
+            <a href="#" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">About</a>
+            <a href="#" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Shop</a>
+            <a href="#" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">AI Features</a>
+            <a href="#" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+          </div>
+          <p className="text-gray-400 dark:text-gray-600 text-sm">
+            © 2024 AiGram - Next Generation Marketplace<br/>
+            Powered by Zud AI ✨
+          </p>
         </div>
       </footer>
 
