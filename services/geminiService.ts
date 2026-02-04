@@ -2,8 +2,15 @@ import { GoogleGenerativeAI, ChatSession } from "@google/generative-ai";
 import { PRODUCTS } from '../constants';
 import { Product } from '../types';
 
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY || 'demo-key';
-const ai = new GoogleGenerativeAI(apiKey);
+// Real-time AI - requires valid API key
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+
+if (!apiKey) {
+  console.error('⚠️ VITE_GEMINI_API_KEY not found! AI features will not work.');
+  console.error('Please add your API key to .env file. Get one from: https://makersuite.google.com/app/apikey');
+}
+
+const ai = apiKey ? new GoogleGenerativeAI(apiKey) : null;
 
 // Construct a system instruction that includes the product catalog
 const systemInstruction = `
@@ -43,6 +50,10 @@ ${JSON.stringify(PRODUCTS.map(p => ({
 let chatSession: ChatSession | null = null;
 
 export const getChatSession = () => {
+  if (!ai) {
+    throw new Error('AI не настроен. Пожалуйста, добавьте VITE_GEMINI_API_KEY в файл .env');
+  }
+  
   if (!chatSession) {
     const model = ai.getGenerativeModel({ 
       model: 'gemini-pro',
@@ -102,8 +113,14 @@ export const sendMessageToGemini = async (message: string, imageBase64?: string)
 
   } catch (error) {
     console.error("Gemini API Error:", error);
+    if (!apiKey) {
+      return {
+        text: "❌ AI не настроен. Пожалуйста, добавьте API ключ Google Gemini в файл .env\n\nПолучите ключ здесь: https://makersuite.google.com/app/apikey",
+        productIds: []
+      };
+    }
     return {
-      text: "Мои нейросети перегружены красотой вашего интерьера. Попробуйте позже! (Ошибка сети)",
+      text: "😔 Извините, произошла ошибка при обработке вашего запроса. Пожалуйста, попробуйте еще раз.",
       productIds: []
     };
   }
