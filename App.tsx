@@ -18,7 +18,7 @@ const App: React.FC = () => {
   const [stories, setStories] = useState<Story[]>(STORIES);
   
   // State for Language and Theme
-  const [language, setLanguage] = useState<Language>('tj');
+  const [language, setLanguage] = useState<Language>('ru');
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {

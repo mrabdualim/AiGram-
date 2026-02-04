@@ -18,8 +18,7 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "types": ["vite/client"]
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["*.tsx", "*.ts", "*.d.ts", "components/**/*", "services/**/*"],
   "exclude": ["node_modules", "dist", "vite.config.ts"]

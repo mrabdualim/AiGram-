@@ -7,7 +7,7 @@ const ai = new GoogleGenerativeAI(apiKey);
 
 // Construct a system instruction that includes the product catalog
 const systemInstruction = `
-Ты - Zud AI, визуальный эксперт и консультант магазина "Мир Техники".
+Ты - Zud AI, визуальный эксперт и консультант магазина "AiGram".
 Твоя супер-сила - подбирать технику под интерьер по фото или описанию.
 
 Вот наш каталог товаров:
