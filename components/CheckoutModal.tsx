@@ -102,7 +102,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, totalAmo
              </div>
              <div className="flex justify-between items-center pt-2 mt-2 border-t border-amber-100">
                <span className="text-amber-800/70">ID:</span>
-               <span className="font-mono text-xs">{Math.random().toString(36).substr(2, 9).toUpperCase()}</span>
+               <span className="font-mono text-xs">{crypto.randomUUID().split('-')[0].toUpperCase()}</span>
              </div>
           </div>
 
