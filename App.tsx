@@ -83,6 +83,12 @@ const App: React.FC = () => {
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
+    
+    // Close modals when switching tabs
+    if (tab !== 'cart') setIsCartOpen(false);
+    if (tab !== 'activity') setIsChatOpen(false);
+    
+    // Open specific modals for these tabs
     if (tab === 'cart') {
       setIsCartOpen(true);
     } else if (tab === 'activity') {

@@ -28,6 +28,8 @@ const InstagramFeed: React.FC<InstagramFeedProps> = ({ onAddToCart, onProductCli
 
   useEffect(() => {
     // Transform products into Instagram-style posts
+    const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
+    
     const instagramPosts: Post[] = PRODUCTS.map((product, index) => ({
       id: product.id,
       user: {
@@ -37,8 +39,8 @@ const InstagramFeed: React.FC<InstagramFeedProps> = ({ onAddToCart, onProductCli
       },
       product,
       caption: product.description,
-      timestamp: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000),
-      liked: product.likes ? product.likes > 100 : false,
+      timestamp: new Date(Date.now() - Math.random() * SEVEN_DAYS_MS),
+      liked: false, // Users can like posts themselves
       saved: false,
     }));
     setPosts(instagramPosts);
@@ -177,7 +179,7 @@ const InstagramFeed: React.FC<InstagramFeedProps> = ({ onAddToCart, onProductCli
 
             {/* Comments Preview */}
             <button className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-              Посмотреть все комментарии ({post.product.comments || 24})
+              Посмотреть все комментарии ({post.product.comments || 0})
             </button>
 
             {/* Timestamp */}

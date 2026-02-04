@@ -87,7 +87,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 ))}
               </div>
               <span className="text-sm text-gray-600 dark:text-gray-400">
-                {product.rating} ({product.comments || 156} отзывов)
+                {product.rating} ({product.comments || 0} отзывов)
               </span>
             </div>
 
